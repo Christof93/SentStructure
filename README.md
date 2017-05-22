@@ -44,14 +44,14 @@ Clone the repository to your source directory or just download the SentStructure
 If you want to use SentStructure.js in your own webpage, just include the source file in your page like so:
 
 ```html
-<script src="SentStructure.js/js/SentStructure.js"></script>
+<script src="SentStructure/js/SentStructure.js"></script>
 ```
 
 You will also have to import d3.js and Jquery:
 
 ```html
-<script src="SentStructure.js/js/jquery.min.js"></script>
-<script src="SentStructure.js/js/d3.min.js"></script>
+<script src="SentStructure/js/jquery.min.js"></script>
+<script src="SentStructure/js/d3.min.js"></script>
 ```
 
 
