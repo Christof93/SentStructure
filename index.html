@@ -1,0 +1,146 @@
+<meta charset="utf-8">
+<title>SentStructure.js - Demo</title>
+<link
+href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css"
+		       rel="stylesheet">
+
+<style>
+#show_controls {
+ width:100%;
+ height:20px;
+ background-color:#337ab7;
+ cursor:pointer;
+}
+#show_controls span {
+ padding-left:48%;
+ color:white;
+}
+#controls form {
+	padding:1em;		
+}
+#add_s {
+	width:39px;
+	height:39px;
+	border-radius:19.5px;
+	padding-bottom:9px;
+	margin-top:1em;
+}
+textarea.input_text {
+ height:10em;
+ width:100%;
+}
+.remove_sent {
+ position:absolute;
+ right:1em;
+ top:2px;
+ cursor:pointer;
+}
+#graph-visual {
+ width:100%;
+ height:100%;
+}
+#setting-link  {
+ 
+}
+#settings label {
+ padding-right:1em;
+ padding-left:0.3em;
+}
+</style>
+<body>
+<div id = "controls">
+<form>
+<h4>Input CoNLL format</h4><a id='setting-link'>show settings</a>
+<div id= 'settings' style='display:none;'>
+	<h5 style="text-decoration:underline;">Select which column carries which feature</h5>
+	<label for='#type-column'>text:</label><select id='type-column' class='col-sel'></select>
+	<label for='#id-column'>id:</label><select id='id-column' class='col-sel'></select>
+	<label for='#pos-column'>pos-tag:</label><select id='pos-column' class='col-sel'></select>
+	<label for='#dep-column'>type of dependency:</label><select id='dep-column' class='col-sel'></select>
+	<label for='#dep_to-column'>target of dependency (id):</label><select id='dep_to-column' class='col-sel'></select>
+	<label for='#align-column'>aligned tokens (id's):</label><select id='align-column' class='col-sel'></select>
+	<label for='#lang-column'>language:</label><select id='lang-column' class='col-sel'></select>
+<div style='width:20%;'>
+<p><label for="#yspacing">y-spacing: </label><input id="yspacing" type="range" min="30" max="350">
+<label for="#xspacing">x-spacing: </label>	
+	<input id="xspacing" type="range"
+							       min="1" max="30"
+							       defaultValue="3">
+	<label for="#xoffset">x-offset: </label>
+	<select id='xoffset-sel'>
+		<option value=0>sentence 1</option>
+		<option value=1>sentence 2</option>
+		<option value="all" selected>all</option>
+	</select>
+	<input id="xoffset" type="range"
+							       min="1" max="1000"
+							       defaultValue="1"></p>
+</div>
+</div>
+	<div class='row' id="inputs">
+	
+	<div class="col-md-6">
+		<p><label>sentence 1: </label></p><textarea class = "input_text"
+					id="gettext1" type="text"></textarea>
+	</div>
+	</div>
+<div class="row">
+<div class="col-md-12">
+<p><button id='add_s' class="btn btn-primary" type="submit"><span
+		class="glyphicon glyphicon-plus"></span></button></p>
+<p><button id='sub' class="btn btn-default" type="submit">visualize!</button></p>
+</div>
+<div class="col-md-9"></div>
+	</div><div class='row'>
+<div class="col-md-3">
+
+ <!--input id="dep" type="checkbox">Show all dependencies
+ <input id="al" type="checkbox">Show all alignments
+ <input id="pos" type="checkbox">Show all POS tags -->
+  	    <label>
+		<input id='dep' type="checkbox" data-toggle="toggle">
+		    Show all dependencies
+	    </label>
+</div><div class="col-md-3">
+	  <label>
+		  <input id='al'  type="checkbox" data-toggle="toggle">
+		  Show all alignments
+	  </label>
+ </div><div class="col-md-3">
+
+	  <label>
+		  <input id='pos' type="checkbox" data-toggle="toggle">
+		  Show all POS tags
+	  </label>
+	</div>  
+  </div> 
+ </form>
+</div>
+<div id='show_controls'><span class = "glyphicon glyphicon-chevron-down"></span></div>
+<div id="graph-visual"></div>
+</body>
+<script src="js/d3.min.js" type="text/JavaScript"></script>
+<script src="js/jquery.min.js" type="text/JavaScript"></script>
+<script src="js/alignment_graphs.js" type="text/JavaScript"></script>
+<script src="js/controls.js" type="text/JavaScript"></script>
+<script src="js/SentStructure.js" type="text/JavaScript"></script>
+<script	src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
+
+<script>
+var starting=[943,1068];
+//var tab_id = "tl_0120_12";
+
+$.ajax({
+		type: 'POST',
+		url: "get_alignments.php",
+		data: {input:starting},
+		success: function(response) {
+			resp=JSON.parse(response);
+			console.log(resp)	
+			visualize(resp,"#graph-visual");
+		}
+	});
+
+</script>
+

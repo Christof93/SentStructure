@@ -1,0 +1,92 @@
+svg.graph {
+/* border:1px solid grey;*/
+}
+g.nodes {cursor:pointer;}
+
+g.nodes rect.hov {
+  fill: Gainsboro;
+}
+g.nodes rect.marked {
+ fill:#FFFF72;
+}
+
+g.node-plates rect.important {
+ fill:#337ab7;
+}
+g.node-text text.important {
+ fill:white;
+}
+
+g.link * {
+ visibility:hidden;
+}
+g.pos-tags text {
+ visibility:hidden;
+}
+g.link.link-path path {
+  fill: none;
+  stroke: #666;
+  stroke-width: 3px;
+  opacity: 0.5;
+/*   stroke-dasharray: 0,2 1; */
+}
+g.link.hidden-link path {
+  fill:none;
+	stroke:#EEEEEE;
+	stroke-width: 16px;
+	opacity:0;
+}
+g.link-desc rect {
+ fill:#e6e6e6;
+ opacity:1;
+}
+g.link-desc text {
+ text-transform:uppercase;
+}
+
+defs.link.marker-arrows marker {
+  stroke: #666;
+  fill: white;
+}
+
+g.link.path-text text {
+  font: 12px sans-serif;
+  stroke: none;
+  pointer-events: none;
+  text-shadow: 0 0.4px 0 rgba(250,250,250,0.3), -0.4px 0 0 rgba(250,250,250,0.3);
+  opacity:0.7;
+}
+
+g.token-alignments path.important {
+	stroke: MediumTurquoise;
+}
+
+g.token-alignments path {
+	visibility:hidden;
+	stroke-width: 3;
+	stroke: #666;
+	opacity:0.3;
+}
+
+g.nodes rect {
+	fill: white;	
+}
+g.link *.locked,g.pos-tags text.locked,g.token-alignments path.locked {
+ visibility:visible;
+}
+g.link *.hov,g.pos-tags text.hov,g.token-alignments path.hov {
+ visibility:visible;
+}
+g.link *.marked,g.pos-tags text.marked,g.token-alignments path.marked {
+ visibility:visible;
+}
+g.link *.important,g.pos-tags text.important,g.token-alignments path.important {
+ visibility:visible;
+}
+
+text {
+  font-family: Tahoma, Geneva, sans-serif;
+  font-size:12px;
+  pointer-events: none;
+  text-shadow: 0 0.4px 0 rgba(250,250,250,0.3), -0.4px 0 0 rgba(250,250,250,0.3);
+}
