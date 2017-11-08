@@ -212,7 +212,7 @@ function SentStructure(json_object) {
 			}
 			catch (err) {
 		 		nodes[node.id]={id: node.id, name: node.type, x:dist, y:ystart, nodeWidth:node.nodeWidth,
-				aligns:[],dists:[], pos:node.upos, important:node.highlight}
+				aligns:[],dists:[], pos:node.upos||node.pos, important:node.highlight}
 			}
 			nodes[node.id].dists=[];
 			nodes[node.id].aligns=[];
